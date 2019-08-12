@@ -1,12 +1,12 @@
 <template>
     <div class="login_body">
         <div>
-            <input v-model="name" class="login_text" placeholder="账户名/手机号/email"/>
+            <input  class="login_text" placeholder="账户名/手机号/email"/>
 
         </div>
         <div>
-            <input v-model="psd" class="login_text" type="passwod" placeholder="请输入您的密码">
-            <span>{{psd}}</span>
+            <input  class="login_text" type="passwod" placeholder="请输入您的密码">
+            
         </div>
         <div class="login_btn">
             <input type="submit" value="登录">
@@ -22,10 +22,7 @@
 <script>
 export default {
     name:'Login',
-    data:{
-        name:"",
-        psd:"",
-    }
+    
 }
 </script>
 

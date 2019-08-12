@@ -7,7 +7,7 @@
                    <span>上海</span><i class="iconfont icon-lower-triangle"></i>
                </router-link>
                <div class="hot_switch">
-                   <router-link tag="div" to="/movie/nowplaying" class="hot_item " style="margin-right:35px;">正在热映</router-link>
+                   <router-link tag="div" to="/movie/nowplaying" class="hot_item ">正在热映</router-link>
 
                    <router-link tag="div" to="/movie/comingsoon" class="hot_item">即将上映</router-link>
                </div>
@@ -54,7 +54,7 @@ export default {
     height:45px;
     border-bottom: 1px solid #e6e6e6;
     display: flex; 
-    justify-content:space-between; 
+    justify-content:space-around; 
     align-items:center;
     background:white; 
     z-index:10;
@@ -79,13 +79,14 @@ export default {
     height: 100%;
     line-height: 45px;
 }
-.movie_menu .hot-item{
+.movie_menu .hot_item{
     font-size: 16px;
     color: #666;
     width: 80px;
     text-align: center;
     margin: 0 12px;
     font-weight: 700;
+    
 }
 .movie_menu .hot_item.active{ 
     color: #ef4238; 
