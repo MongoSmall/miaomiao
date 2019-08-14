@@ -4,7 +4,7 @@
        <div id="content">
            <div class="movie_menu">
                <router-link tag="div" to="/movie/city" class="city_name">
-                   <span>上海</span><i class="iconfont icon-lower-triangle"></i>
+                   <span>{{$store.state.city.nm}}</span><i class="iconfont icon-lower-triangle"></i>
                </router-link>
                <div class="hot_switch">
                    <router-link tag="div" to="/movie/nowplaying" class="hot_item ">正在热映</router-link>
@@ -29,6 +29,9 @@
 <script>
  import Header from '@/components/Header';
  import TabBar from '@/components/TabBar';
+ import {messageBox} from '@/components/JS'
+import { setTimeout } from 'timers';
+ 
 
 
 export default {
@@ -36,6 +39,37 @@ export default {
     components:{
         Header,
         TabBar,
+       
+    },
+    mounted(){
+        setTimeout(()=>{
+        this.axios.get('/api/getLocation').then((res)=>{
+            var msg = res.data.msg;
+            if(msg === 'ok'){
+                var nm = res.data.data.nm;
+                var id = res.data.data.id;
+                if(this.$store.state.city.id == id){
+                    return;
+
+                }
+                messageBox({
+                    title:'切换定位为：',
+                    content:nm,
+                    cancel:'取消',
+                    ok:'切换',
+                   
+                    handleOk(){
+                       //可以该本地存储，重新渲染页面或者可以改状态管理
+                    window.localStorage.setItem('nowNm',nm);
+                    window.localStorage.setItem('nowId',id);
+                    window.location.reload();
+                    }
+                });
+            }
+
+        });
+        },2000)
+      
     }
 }
 </script>
